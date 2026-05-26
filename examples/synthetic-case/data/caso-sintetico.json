@@ -1,0 +1,293 @@
+{
+  "meta": {
+    "versao": "1.0.0",
+    "data_extracao": "2026-05-26T12:00:00-03:00",
+    "arquivo_fonte": "processo-sintetico-publico.pdf",
+    "total_paginas": 18,
+    "idioma": "pt-BR",
+    "elaborado_por": "Legal Extract sample"
+  },
+  "processo": {
+    "numero_principal": "PROCESSO-SINTETICO-1",
+    "numero_cumprimento": "PROCESSO-SINTETICO-2",
+    "numero_apelacao": "PROCESSO-SINTETICO-3",
+    "classe": "Procedimento Comum Civel",
+    "assunto": "Beneficio previdenciario - exemplo sintetico",
+    "comarca": "Sao Paulo",
+    "foro": "Foro Central",
+    "vara": "1a Vara Civel",
+    "justica_gratuita": true,
+    "partes": {
+      "autor": {
+        "nome": "PESSOA AUTORA SINTETICA",
+        "cpf": "CPF-SINTETICO",
+        "rg": "RG-SINTETICO",
+        "data_nascimento": "01/01/1970",
+        "naturalidade": "Sao Paulo-SP",
+        "filiacao": {
+          "pai": "PAI SINTETICO",
+          "mae": "MAE SINTETICA"
+        },
+        "endereco": "Endereco sintetico",
+        "telefone": null,
+        "hipossuficiente": true,
+        "fonte": {
+          "paginas_pdf": [1],
+          "fls": [10]
+        }
+      },
+      "reu": {
+        "nome": "INSTITUTO SINTETICO",
+        "cnpj": "CNPJ-SINTETICO",
+        "tipo": "Autarquia sintetica",
+        "procurador": "PROCURADOR SINTETICO",
+        "fonte": {
+          "paginas_pdf": [1],
+          "fls": [10]
+        }
+      }
+    },
+    "advogados": [
+      {
+        "nome": "ADVOGADA SINTETICA",
+        "oab": "OAB/SP 000000",
+        "cpf": "CPF-SINTETICO",
+        "polo": "autor",
+        "endereco_profissional": "Endereco profissional sintetico",
+        "fonte": {
+          "paginas_pdf": [2],
+          "fls": [11]
+        }
+      }
+    ]
+  },
+  "sentenca": {
+    "titulo": "SENTENCA",
+    "tribunal": "Tribunal de Justica Sintetico",
+    "orgao_julgador": "1a Vara Civel",
+    "juiz": "JUIZA SINTETICA",
+    "data": "10/01/2026",
+    "paginas_pdf": [3, 4],
+    "fls": [20, 21],
+    "dispositivo": "JULGO PARCIALMENTE PROCEDENTE",
+    "resultado": "parcialmente_procedente",
+    "resumo": "Reconheceu parcialmente o pedido em exemplo publico sintetico.",
+    "periodos_reconhecidos": [
+      {
+        "inicio": "01/01/2000",
+        "fim": "31/12/2005",
+        "agente_nocivo": "ruido sintetico",
+        "intensidade": "85 dB",
+        "limite_tolerancia": "80 dB",
+        "empresa": "EMPRESA SINTETICA",
+        "setor": "Producao",
+        "documento": "PPP sintetico",
+        "fator_conversao": 1.4,
+        "fonte": {
+          "paginas_pdf": [3],
+          "fls": [20]
+        }
+      }
+    ],
+    "periodos_nao_reconhecidos": [],
+    "tempo_contribuicao": {
+      "reconhecido_inss": {
+        "anos": 25,
+        "meses": 0,
+        "dias": 0,
+        "data_referencia": "01/01/2026"
+      },
+      "tempo_especial_convertido": {
+        "anos": 2,
+        "meses": 4,
+        "dias": 0
+      },
+      "total_computado": {
+        "anos": 27,
+        "meses": 4,
+        "dias": 0
+      }
+    },
+    "honorarios": {
+      "reu_inss": {
+        "custas_percentual": "20%",
+        "honorarios_patrono_autor": "R$ 300,00"
+      },
+      "autor": {
+        "custas_percentual": "80%",
+        "honorarios_patrono_reu": "R$ 1.200,00"
+      }
+    },
+    "fundamentacao_legal": ["Art. 000, Lei 0.000/00"]
+  },
+  "acordao": {
+    "titulo": "ACORDAO",
+    "tribunal": "Tribunal Regional Sintetico",
+    "orgao_julgador": "1a Turma",
+    "numero": "Apelacao Civel PROCESSO-SINTETICO-3",
+    "relator": "RELATOR SINTETICO",
+    "paginas_pdf": [5, 6],
+    "fls": [30, 31],
+    "dispositivo": "DOU PARCIAL PROVIMENTO AO RECURSO DA PARTE AUTORA",
+    "resultado": "parcial_provimento_autor",
+    "resumo": "Acrescentou periodo especial no exemplo sintetico.",
+    "apelacao_inss": {
+      "resultado": "negou_provimento",
+      "argumento": "Argumento sintetico rejeitado"
+    },
+    "apelacao_autor": {
+      "resultado": "parcial_provimento",
+      "argumento": "Argumento sintetico acolhido em parte"
+    },
+    "periodo_adicional_reconhecido": {
+      "inicio": "01/01/2006",
+      "fim": "31/12/2007",
+      "agente_nocivo": "ruido sintetico",
+      "empresa": "EMPRESA SINTETICA"
+    },
+    "aposentadoria_concedida": {
+      "tipo": "Aposentadoria sintetica",
+      "der_original": "01/01/2024",
+      "der_reafirmada": "01/01/2026",
+      "nb": "0RG-SINTETICO",
+      "efeitos_financeiros": "a partir da DER reafirmada"
+    },
+    "honorarios_acordao": {
+      "condenacao": "Mantidos",
+      "base_legal": "Art. 85 CPC"
+    },
+    "correcao_monetaria": {
+      "juros_mora": "conforme manual aplicavel",
+      "indice": "SELIC"
+    },
+    "temas_stj_citados": []
+  },
+  "embargos_declaracao": {
+    "resultado": "rejeitados",
+    "paginas_pdf": [7],
+    "fls": [40]
+  },
+  "certidao_transito_julgado": {
+    "data_transito": "20/02/2026",
+    "data_certidao": "21/02/2026",
+    "local": "Sao Paulo",
+    "paginas_pdf": [8],
+    "fls": [45],
+    "texto_integral": "Certifico, de forma sintetica, o transito em julgado em 20/02/2026."
+  },
+  "decisao_homologando_calculos": {
+    "juiz": "JUIZA SINTETICA",
+    "data": "15/03/2026",
+    "processo": "PROCESSO-SINTETICO-2",
+    "paginas_pdf": [9, 10],
+    "fls": [50, 51],
+    "dispositivo_items": ["Homologo os calculos sinteticos.", "Expecam-se requisitorios."],
+    "texto_integral": "Decisao sintetica homologando os calculos.",
+    "concordancia_autor": {
+      "data": "12/03/2026",
+      "advogado": "ADVOGADA SINTETICA"
+    }
+  },
+  "calculos_liquidacao": {
+    "sistema": "CONTA FACIL PREV",
+    "elaborado_por": "CONTADOR SINTETICO",
+    "data": "01/03/2026",
+    "atualizado_ate": "03/2026",
+    "paginas_pdf": [11, 12],
+    "fls": [60, 61],
+    "resumo_valores": {
+      "partes": {
+        "principal_corrigido": 100000,
+        "juros_moratorios": 15000,
+        "selic": 5000,
+        "total": 120000
+      },
+      "sucumbencias": {
+        "principal_corrigido": 10000,
+        "juros_selic": 1000,
+        "total": 11000
+      },
+      "totalizacao": {
+        "subtotal_conta": 120000,
+        "total_geral": 131000
+      }
+    },
+    "periodo_parcelas": {
+      "inicio": "01/2024",
+      "fim": "03/2026",
+      "total_meses": 27,
+      "rmi_inicial": 3000
+    }
+  },
+  "oficios_requisitorios": [
+    {
+      "numero": "REQ-0001-SINTETICO",
+      "tipo_procedimento": "Precatorio",
+      "natureza_credito": "Alimenticio",
+      "valores": {
+        "valor_total": 120000,
+        "valor_principal": 100000,
+        "juros_mora": 15000,
+        "juros_selic": 5000
+      },
+      "transito_fase_conhecimento": "20/02/2026",
+      "transito_embargos": "20/02/2026",
+      "status": "Registrado",
+      "paginas_pdf": [13],
+      "fls": [70]
+    }
+  ],
+  "pagamentos": [
+    {
+      "tipo": "RPV",
+      "requisicao_numero": "REQ-0001-SINTETICO",
+      "data_pagamento": "10/04/2026",
+      "valor_pago_total": 5000,
+      "valor_pago_principal": 4500,
+      "valor_pago_juros": 500,
+      "beneficiario": "PESSOA AUTORA SINTETICA",
+      "banco": "Banco Sintetico",
+      "agencia": "0001",
+      "conta": "00000-0",
+      "status": "Pago sintetico",
+      "paginas_pdf": [14],
+      "fls": [80]
+    }
+  ],
+  "beneficio_previdenciario": {
+    "nb": "0RG-SINTETICO",
+    "dib": "01/01/2026",
+    "dip": "01/02/2026",
+    "rmi": 3000
+  },
+  "linha_do_tempo": [
+    {
+      "data": "10/01/2026",
+      "evento": "Sentenca sintetica",
+      "pagina_pdf": 3,
+      "fls": 20
+    },
+    {
+      "data": "20/02/2026",
+      "evento": "Transito em julgado sintetico",
+      "pagina_pdf": 8,
+      "fls": 45
+    },
+    {
+      "data": "15/03/2026",
+      "evento": "Calculos homologados",
+      "pagina_pdf": 9,
+      "fls": 50
+    }
+  ],
+  "status_processual": {
+    "fase_atual": "execucao sintetica",
+    "pendencias": ["verificacoes externas de due diligence"]
+  },
+  "fact_check": {
+    "iteracoes": 8,
+    "campos_verificados": ["processo", "partes", "sentenca", "acordao", "calculos", "pagamentos"],
+    "discrepancias": [],
+    "confianca_geral": "alta"
+  }
+}

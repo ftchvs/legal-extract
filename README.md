@@ -1,6 +1,16 @@
-# Legal Extract — Brazilian Legal PDF Analysis for Claude Code
+# Legal Extract
 
-Extract structured information from Brazilian legal PDFs (processos judiciais), generate interactive dashboards, fact-check against source documents, and produce parecer juridico in PDF.
+Brazilian legal PDF extraction workflow for Claude Code: structured JSON,
+interactive dashboards, source-traceable fact-checking, and Typst-based parecer
+PDF generation.
+
+This repository is a public-safe sample. It ships the skill, slash command,
+schema references, Typst template, and a synthetic fixture so contributors can
+inspect and validate the workflow without private legal files.
+
+> Legal and privacy note: this project is an extraction and drafting aid, not
+> legal advice. Do not publish private case files, CPFs, RGs, addresses,
+> signatures, bank details, or confidential court material.
 
 ## What It Does
 
@@ -20,21 +30,38 @@ Supports any area of Brazilian law: previdenciario, trabalhista, civel, tributar
 ### Prerequisites
 
 - [Claude Code](https://claude.ai/code) (CLI)
-- [Typst](https://typst.app/) — `brew install typst`
+- [Typst](https://typst.app/) for parecer PDF generation
 
-### Installation
+On macOS:
 
 ```bash
-# 1. Copy skill to your skills directory
-mkdir -p ~/.agents/skills/legal-extract
-cp -r skills/legal-extract/* ~/.agents/skills/legal-extract/
-
-# 2. Symlink into Claude Code skills
-ln -sf ~/.agents/skills/legal-extract ~/.claude/skills/legal-extract
-
-# 3. Copy command
-cp commands/parecer.md ~/.claude/commands/parecer.md
+brew install typst jq
 ```
+
+`jq` is only required for the sample validation script.
+
+### Install The Skill
+
+```bash
+scripts/install.sh
+```
+
+The installer copies:
+
+- `skills/legal-extract/` → `~/.agents/skills/legal-extract/`
+- symlink → `~/.claude/skills/legal-extract`
+- `commands/parecer.md` → `~/.claude/commands/parecer.md`
+
+Manual installation is still possible if you prefer copying files yourself.
+
+### Validate The Public Sample
+
+```bash
+scripts/check-sample.sh
+```
+
+This validates `examples/synthetic-case/data/caso-sintetico.json` and compiles
+the Typst parecer template when `typst` is installed.
 
 ### Usage
 
@@ -52,6 +79,9 @@ cp commands/parecer.md ~/.claude/commands/parecer.md
 /parecer "path/to/legal.pdf" --pages=1-40
 ```
 
+Use `--extract-only` first when evaluating a new document. Run full parecer
+generation only after the extracted JSON has usable source references.
+
 ## Output
 
 All files saved alongside the source PDF:
@@ -65,12 +95,19 @@ All files saved alongside the source PDF:
 └── parecer-{slug}.pdf            # Generated parecer (Typst)
 ```
 
+Generated outputs from private PDFs should stay outside this repository.
+
 ## Repository Structure
 
 ```
 .
 ├── commands/
 │   └── parecer.md                # /parecer command (entry point)
+├── examples/
+│   └── synthetic-case/           # public-safe sample JSON fixture
+├── scripts/
+│   ├── check-sample.sh           # JSON + Typst template smoke test
+│   └── install.sh                # local Claude Code skill installer
 └── skills/
     └── legal-extract/
         ├── SKILL.md              # Domain knowledge + workflow methodology
@@ -79,6 +116,18 @@ All files saved alongside the source PDF:
         │   └── json-schema.md    # Standardized JSON output schema
         └── templates/
             └── parecer.typ       # Typst template for parecer juridico
+```
+
+## Public-Safe Sample
+
+The repository intentionally does not include a real legal PDF. Real case PDFs
+often contain names, CPFs, RGs, signatures, addresses, bank information, and
+confidential filings.
+
+Use the synthetic fixture for template and schema checks:
+
+```bash
+examples/synthetic-case/data/caso-sintetico.json
 ```
 
 ## Supported Document Types
@@ -128,6 +177,17 @@ The workflow includes an 8-pass verification against the source PDF:
 8. Cross-document consistency
 
 Results are stored in the JSON `fact_check` section with a confidence score (alta/media/baixa).
+
+## Validation Checklist
+
+Before opening a pull request:
+
+- Run `scripts/check-sample.sh`.
+- Confirm examples use synthetic or explicitly public-safe data.
+- Confirm new extracted fields include page/folha source references.
+- Confirm README, schema docs, and command docs are updated for user-facing
+  behavior changes.
+- Do not commit generated outputs from private PDFs.
 
 ## Project Health
 
