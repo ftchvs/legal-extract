@@ -1,5 +1,5 @@
 // PARECER JURÍDICO — Typst Template
-// Usage: typst compile --input data-path="data/caso.json" parecer.typ parecer.pdf
+// Usage: typst compile --root / --input data-path="/absolute/path/data/caso.json" parecer.typ parecer.pdf
 
 #set document(
   title: "Parecer Jurídico",

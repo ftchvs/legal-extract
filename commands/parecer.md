@@ -21,10 +21,10 @@ This command uses the `legal-extract` skill from `~/.agents/skills/legal-extract
 ## Usage
 
 ```bash
-/parecer "path/to/legal.pdf"                    # Full workflow (all 4 phases)
-/parecer "path/to/legal.pdf" --extract-only      # JSON + HTML only, no parecer PDF
-/parecer "path/to/legal.pdf" --no-factcheck      # Skip ralph-loop fact-checking
-/parecer "path/to/legal.pdf" --pages=1-40        # Specific page range only
+/parecer "cases/public-safe-example/processo.pdf"                    # Full workflow
+/parecer "cases/public-safe-example/processo.pdf" --extract-only      # JSON + HTML only
+/parecer "cases/public-safe-example/processo.pdf" --no-factcheck      # Skip fact-checking
+/parecer "cases/public-safe-example/processo.pdf" --pages=1-40        # Page range
 ```
 
 ## Arguments
@@ -40,10 +40,10 @@ This command uses the `legal-extract` skill from `~/.agents/skills/legal-extract
 
 ```
 PHASE 0: CONTEXT DISCOVERY
-└── Task(Explore) → Search vault for prior analyses of same case/parties
-    ├── vault/projects/ (existing case files)
-    ├── vault/financial-analysis/ (related precatório analyses)
-    └── QMD memory search
+└── Search the local workspace or case directory for prior analyses
+    ├── existing data/caso-*.json files for same parties/process numbers
+    ├── related dashboards or parecer PDFs in the same case folder
+    └── optional local memory/search tools when available
 
 PHASE 1: EXTRACTION (coordinator)
 ├── Read all PDF pages in batches of 20
@@ -76,7 +76,7 @@ PHASE 3: FACT-CHECK (ralph-loop agent) [skip with --no-factcheck]
 
 PHASE 4: PARECER PDF (Typst) [skip with --extract-only]
 ├── Load template: ~/.agents/skills/legal-extract/templates/parecer.typ
-├── Compile: typst compile --input data-path="data/caso-{slug}.json" parecer.typ
+├── Compile: typst compile --root / --input data-path="{pdf_dir}/data/caso-{slug}.json" parecer.typ
 ├── 5 sections: Partes, Processo, Precatório, Due Diligence, Conclusão
 └── Output: {pdf_dir}/parecer-{slug}.pdf
 ```
@@ -94,7 +94,7 @@ All outputs saved alongside the source PDF:
 └── parecer-{slug}.pdf          # Generated parecer (if not --extract-only)
 ```
 
-The `{slug}` is derived from the case parties (e.g., `bonesso-inss`).
+The `{slug}` is derived from the case parties or process number.
 
 ## Execution Instructions
 
@@ -114,13 +114,14 @@ Load `~/.agents/skills/legal-extract/SKILL.md` for extraction methodology, then 
 
 ### Step 3: Execute phases
 
-1. **Phase 0:** Search vault for prior analyses (`Task(Explore)`)
+1. **Phase 0:** Search local workspace/case folder for prior analyses
 2. **Phase 1:** Read PDF pages, detect documents, build JSON per schema
 3. **Phase 2:** Spawn background agent to generate HTML dashboard from JSON
 4. **Phase 3:** If not `--no-factcheck`, spawn ralph-loop agent for 8-pass verification
 5. **Phase 4:** If not `--extract-only`, compile parecer PDF via Typst:
    ```bash
    typst compile \
+     --root / \
      --input data-path="{pdf_dir}/data/caso-{slug}.json" \
      ~/.agents/skills/legal-extract/templates/parecer.typ \
      {pdf_dir}/parecer-{slug}.pdf
@@ -133,6 +134,7 @@ Print summary with:
 - JSON field count
 - Fact-check confidence score
 - Output file paths
+- Privacy reminder if the PDF appears to contain personal identifiers
 
 ## Supported Legal Areas
 
@@ -151,3 +153,14 @@ The extraction adapts automatically based on detected keywords. Core structure (
 - **Typst** (`typst` CLI) — for parecer PDF generation. Install: `brew install typst`
 - **Claude Code** — for PDF reading and agent orchestration
 - No Python, no MCP servers, no API keys required
+
+## Public-Safe Development Fixture
+
+This repository includes a synthetic JSON fixture for schema and template checks:
+
+```bash
+scripts/check-sample.sh
+```
+
+Do not use private PDFs, real CPFs/RGs, real party names, bank data, addresses,
+or confidential filings in public issues, pull requests, or examples.

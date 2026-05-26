@@ -16,6 +16,14 @@ related-skills: ocr, latex-document, pdf
 
 Complete workflow for extracting structured data from Brazilian legal case PDFs, generating dashboards, fact-checking, and producing parecer juridico in PDF.
 
+## Safety Boundary
+
+Treat every source PDF as sensitive unless the user explicitly says it is public
+and safe. Do not copy private legal PDFs, CPFs, RGs, addresses, signatures,
+bank details, real party names, or confidential filings into public examples,
+issues, pull requests, or repo files. This workflow is an extraction and
+drafting aid, not legal advice.
+
 ## Workflow Overview
 
 ```
@@ -148,7 +156,7 @@ Generate a self-contained HTML file with these characteristics:
 - All text in pt-BR
 - Light theme (white background)
 - All `<details>` sections open by default
-- Google Fonts: Inter (400, 500, 600, 700)
+- Font stack: Inter when locally available, then system sans-serif
 - Max-width 1400px, responsive grid
 - PDF page references on every section (`Fonte: p.XX, fls. YY`)
 - Self-contained (inline CSS/JS, no external dependencies except fonts)
@@ -187,9 +195,10 @@ Run 8 systematic verification passes against the source PDF:
 ### Compilation
 ```bash
 typst compile \
-  --input data-path="data/caso-{slug}.json" \
+  --root / \
+  --input data-path="{pdf_dir}/data/caso-{slug}.json" \
   ~/.agents/skills/legal-extract/templates/parecer.typ \
-  parecer-{slug}.pdf
+  {pdf_dir}/parecer-{slug}.pdf
 ```
 
 ### Template Structure (5 sections)
@@ -214,7 +223,7 @@ All outputs go in the same directory as the source PDF:
 └── parecer-{slug}.pdf            # Generated parecer
 ```
 
-The `{slug}` is derived from the case parties (e.g., `bonesso-inss`).
+The `{slug}` is derived from the case parties or process number.
 
 ---
 
@@ -222,14 +231,22 @@ The `{slug}` is derived from the case parties (e.g., `bonesso-inss`).
 
 ```bash
 # Full workflow (extract + dashboard + fact-check + parecer)
-/parecer "vault/projects/maz/test_maz.pdf"
+/parecer "cases/public-safe-example/processo.pdf"
 
 # Extract only (JSON + HTML, no parecer PDF)
-/parecer "vault/projects/maz/test_maz.pdf" --extract-only
+/parecer "cases/public-safe-example/processo.pdf" --extract-only
 
 # Skip fact-checking for speed
-/parecer "vault/projects/maz/test_maz.pdf" --no-factcheck
+/parecer "cases/public-safe-example/processo.pdf" --no-factcheck
 
 # Specific page range
-/parecer "vault/projects/maz/test_maz.pdf" --pages=1-40
+/parecer "cases/public-safe-example/processo.pdf" --pages=1-40
+```
+
+## Public-Safe Development Fixture
+
+This repo ships a synthetic JSON fixture for schema/template validation:
+
+```bash
+scripts/check-sample.sh
 ```

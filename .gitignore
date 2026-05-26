@@ -1,0 +1,9 @@
+# Generated Legal Extract outputs
+/data/
+dashboard.html
+parecer-*.pdf
+*.pdf
+
+# Local/system files
+.DS_Store
+*.tmp
