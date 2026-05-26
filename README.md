@@ -129,6 +129,16 @@ The workflow includes an 8-pass verification against the source PDF:
 
 Results are stored in the JSON `fact_check` section with a confidence score (alta/media/baixa).
 
+## Project Health
+
+- Contribution guidelines: [CONTRIBUTING.md](CONTRIBUTING.md)
+- Security and privacy reporting: [SECURITY.md](SECURITY.md)
+- Accessibility expectations: [ACCESSIBILITY.md](ACCESSIBILITY.md)
+
+Use synthetic or explicitly public-safe legal data in issues, examples, tests,
+and pull requests. Do not publish private case files, CPFs, RGs, addresses, or
+confidential court material.
+
 ## License
 
 MIT
