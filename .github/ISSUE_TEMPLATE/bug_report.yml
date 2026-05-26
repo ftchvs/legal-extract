@@ -1,0 +1,30 @@
+name: Bug report
+description: Report a problem with extraction, dashboard, fact-checking, or parecer generation.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Steps using synthetic or public-safe data only.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+  - type: textarea
+    id: privacy
+    attributes:
+      label: Privacy check
+      description: Confirm no private case data, CPFs, RGs, or confidential documents are included.
+    validations:
+      required: true
